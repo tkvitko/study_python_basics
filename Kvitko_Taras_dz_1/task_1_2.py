@@ -1,12 +1,18 @@
+def get_digits_of_number(number: int) -> list:
+    digits = []
+
+    while number > 0:
+        digit = number % 10
+        digits.append(digit)
+        number //= 10
+
+    return digits
+
+
 def sum_list(dataset: list) -> int:
     sum_ = 0
     for item in dataset:
-
-        # суммирование базовых элементов
-        sum_of_digits = 0
-        for digit in str(item):
-            sum_of_digits += int(digit)
-        if sum_of_digits % 7 == 0:
+        if sum(get_digits_of_number(item)) % 7 == 0:
             sum_ += item
 
     return sum_
@@ -18,10 +24,7 @@ def sum_list_2(dataset: list) -> int:
 
         # суммирование элементов после изменения
         item += 17
-        sum_of_digits = 0
-        for digit in str(item):
-            sum_of_digits += int(digit)
-        if sum_of_digits % 7 == 0:
+        if sum(get_digits_of_number(item)) % 7 == 0:
             sum_ += item
 
     return sum_
