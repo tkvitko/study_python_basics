@@ -1,6 +1,12 @@
-def stringify(source_list: list) -> str:
-    str_ = ''
-    for item in source_list:
+from random import uniform
+
+
+def transfer_list_in_str(list_in: list) -> str:
+    """Преобразует каждый элемент списка (вещественное число) в строку вида '<r> руб <kk> коп' и
+        формирует из них единую строковую переменную разделяя значения запятой."""
+
+    str_out = ''
+    for item in list_in:
         nums_item = str(item).split('.')  # делим строку на рубли и копейки по точке
         rubles = nums_item[0]  # рубли это первый элемент списка
         try:
@@ -8,28 +14,54 @@ def stringify(source_list: list) -> str:
         except IndexError:
             cents = 0
 
-        if len(str(cents)) < 2:  # добавляем ноль в начале, если копеек меньше 10
-            cents = f'0{cents}'
+        if len(str(cents)) < 2:  # добавляем ноль в конце, если значение меньше 10
+            cents = f'{cents}0'
 
-        str_ += f'{rubles} руб {cents} коп, '
+        str_out += f'{rubles} руб {cents} коп, '
 
-    return str_
+    return str_out[:-2]  # обрежем лишние ', '
 
 
-if __name__ == '__main__':
-    my_list = [57.8, 46.51, 97, 5.04, 7.0, 35.25, 76.7, 64.24, 5.6, 7.67]
+my_list = [round(uniform(10, 100), 2) for _ in range(1, 16)]  # автоматическая генерация случайных 15 чисел
+print(f'Исходный список: {my_list}')
+result_1 = transfer_list_in_str(my_list)
+print(result_1)
 
-    print('A. Вывод списка цен строкой:')
-    print(stringify(my_list))
 
-    print('\nB. Вывод отсортированного списка без создания нового:')
-    print(id(my_list), my_list)
-    my_list.sort()
-    print(id(my_list), my_list)
+def sort_prices(list_in: list):
+    """Сортирует вещественные числа по возрастанию, не создавая нового списка"""
 
-    print('\nC. Новый список, содержащий те же цены, но отсортированные по убыванию:')
-    new_list = sorted(my_list, reverse=True)
-    print(id(new_list), new_list)
+    list_in.sort()
+    return list_in
 
-    print('\nD. Цены 5-ти самых дорогих товаров по возрастанию:')
-    print(my_list[-5:])
+
+# зафиксируйте здесь информацию по исходному списку my_list
+id_before_sorting = id(my_list)
+result_2 = sort_prices(my_list)
+# зафиксируйте здесь доказательство, что результат result_2 остался тем же объектом
+print(result_2)
+id_after_sorting = id(result_2)
+print(f'{id_before_sorting} = {id_after_sorting}')
+
+
+def sort_price_adv(list_in: list) -> list:
+    """Создаёт новый список и возвращает список с элементами по убыванию"""
+    return sorted(list_in, reverse=True)
+
+
+result_3 = sort_price_adv(my_list)
+print(result_3)
+id_after_sorting = id(result_3)
+print(f'{id_before_sorting} != {id_after_sorting}')
+
+
+def check_five_max_elements(list_in: list) -> list:
+    """Проверяет элементы входного списка вещественных чисел и возвращает
+        список из ПЯТИ максимальных значений"""
+
+    list_out = sorted(list_in, reverse=True)[:5][::-1]
+    return list_out
+
+
+result_4 = check_five_max_elements(my_list)
+print(result_4)

@@ -1,16 +1,16 @@
-def get_name(string: str) -> str:
-    # Функция взятия имени в нужном формате из строки
-    source_name = string.split()[-1]
-    return source_name.title()
+def convert_name_extract(list_in: list):
+    """Извлекает имена из элементов и формирует список приветствий."""
+
+    # Реализовано без создания нового списка.
+    # Функция меняет сам список, потому результат можно не возвращать
+    for i in range(len(list_in)):
+        list_in[i] = f'Привет, {list_in[i].split()[-1].title()}!'
 
 
-if __name__ == '__main__':
+my_list = ['инженер-конструктор Игорь',
+           'главный бухгалтер МАРИНА',
+           'токарь высшего разряда нИКОЛАй',
+           'директор аэлита']
 
-    my_list = ['инженер-конструктор Игорь',
-               'главный бухгалтер МАРИНА',
-               'токарь высшего разряда нИКОЛАй',
-               'директор аэлита']
-
-    for item in my_list:
-        name = get_name(item)
-        print(f'Привет, {name}!')
+convert_name_extract(my_list)
+print(my_list)
