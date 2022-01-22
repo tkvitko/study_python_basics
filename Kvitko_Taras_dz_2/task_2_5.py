@@ -59,7 +59,7 @@ def check_five_max_elements(list_in: list) -> list:
     """Проверяет элементы входного списка вещественных чисел и возвращает
         список из ПЯТИ максимальных значений"""
 
-    list_out = sorted(list_in, reverse=True)[:5][::-1]
+    list_out = sorted(list_in)[-5:]
     return list_out
 
 
