@@ -24,7 +24,7 @@ def currency_rates(code: str) -> (float, datetime):
                 # поля кода и стоимости заносим в словарь
                 currency_dict[param.tag] = param.text
                 if currency_dict['CharCode'] == code.upper() and 'Value' in currency_dict:
-                    # если это нужный код, возвращаем стоимость
+                    # если это нужный код и уже собрана стоимость, возвращаем ее
                     return float(currency_dict['Value'].replace(',', '.')), date
 
     # если в ответе не нашелся запрошенный код валюты, возвращаем только дату
