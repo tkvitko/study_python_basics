@@ -32,8 +32,8 @@ def currency_rates(code: str) -> (float, datetime):
 
 
 if __name__ == '__main__':
-    value, date = currency_rates(code='usb')
+    value, answer_date = currency_rates(code='usb')
     if value:
-        print(f'{value:.2f}, {datetime.strftime(date, "%Y-%m-%d")}')
+        print(f'{value:.2f}, {datetime.strftime(answer_date, "%Y-%m-%d")}')
     else:
-        print(datetime.strftime(date, "%Y-%m-%d"))
+        print(datetime.strftime(answer_date, "%Y-%m-%d"))
