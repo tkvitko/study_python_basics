@@ -19,3 +19,4 @@ def num_translate_adv(number_word: str) -> str:
 
 
 print(num_translate_adv('One'))
+print(num_translate_adv('two'))

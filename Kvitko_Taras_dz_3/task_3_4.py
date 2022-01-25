@@ -1,4 +1,4 @@
-def thesaurus_adv(*args) -> dict:
+def thesaurus_adv(*args):
     pairs_list = args
     result = {}
 
@@ -14,9 +14,9 @@ def thesaurus_adv(*args) -> dict:
                 if name[0] in result[surname[0]]:
                     result[surname[0]][name[0]].append(pair)
                 else:
-                    result[surname[0]][name[0]] = [pair, ]
+                    result[surname[0]][name[0]] = [pair]
             else:
-                result[surname[0]] = {name[0]: [pair, ]}
+                result[surname[0]] = {name[0]: [pair]}
 
     return result
 

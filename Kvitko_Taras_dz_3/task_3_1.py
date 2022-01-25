@@ -1,4 +1,6 @@
-def num_translate(number_word: str) -> str:
+def num_translate(value: str) -> str:
+    """переводит числительное с английского на русский """
+
     numbers = {
         'one': 'один',
         'two': 'два',
@@ -12,7 +14,9 @@ def num_translate(number_word: str) -> str:
         'ten': 'десять'
     }
 
-    return numbers.get(number_word)
+    str_out = numbers.get(value)
+    return str_out
 
 
-print(num_translate('ten'))
+print(num_translate("one"))
+print(num_translate("eight"))

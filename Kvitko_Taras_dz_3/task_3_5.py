@@ -1,10 +1,10 @@
 import random
 
 
-def get_jokes(jokes_count=2, can_repeat=True) -> list:
+def get_jokes(count=2, can_repeat=True) -> list:
     """
-    Функция генерации шуток
-    :param jokes_count: количество шуток
+    Возвращает список шуток в количестве count
+    :param count: количество шуток
     :param can_repeat: может ли одно и то же слово повторяться в разных шутках
     :return: список шуток
     """
@@ -13,16 +13,25 @@ def get_jokes(jokes_count=2, can_repeat=True) -> list:
     adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
     adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
 
-    jokes_list = []
-    for i in range(jokes_count):
+    list_out = []
+
+    if not can_repeat:
+        # На случай, если попросили слишком много шуток при условии, что повторять слова нельзя
+        min_len = min(len(nouns), len(adverbs), len(adjectives))
+        if count > min_len:
+            count = min_len
+
+    for i in range(count):
         if can_repeat:
             words_list = list(map(random.choice, [nouns, adverbs, adjectives]))
         else:
             words_list = list(map(lambda x: x.pop(random.randrange(len(x))), [nouns, adverbs, adjectives]))
-        jokes_list.append(' '.join(words_list))
+        list_out.append(' '.join(words_list))
 
-    return jokes_list
+    return list_out
 
 
 print(get_jokes(can_repeat=False,
-                jokes_count=4))
+                count=10))
+print(get_jokes(can_repeat=True,
+                count=2))
