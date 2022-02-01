@@ -1,18 +1,15 @@
+import typing
 
 
-def odd_nums(max_number: int):
-    for number in range(1, max_number + 1, 2):
+def odd_nums(number: int) -> typing.Generator:
+    """Генератор, возвращающий по очереди нечетные целые числа от 1 до number (включительно)"""
+
+    for number in range(1, number + 1, 2):
         yield number
 
 
-if __name__ == '__main__':
-    odd_to_15 = odd_nums(15)
-    print(next(odd_to_15))
-    print(next(odd_to_15))
-    print(next(odd_to_15))
-    print(next(odd_to_15))
-    print(next(odd_to_15))
-    print(next(odd_to_15))
-    print(next(odd_to_15))
-    print(next(odd_to_15))
-    print(next(odd_to_15))
+n = 15
+generator = odd_nums(n)
+for _ in range(1, n + 1, 2):
+    print(next(generator))
+next(generator)  # если раскомментировать, то должно падать в traceback по StopIteration
