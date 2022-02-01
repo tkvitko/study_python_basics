@@ -3,6 +3,7 @@ __pycache__/
 .idea/
 *.py[cod]
 *$py.class
+Kvitko_Taras_dz_6/nginx_logs.txt
 
 # C extensions
 *.so
