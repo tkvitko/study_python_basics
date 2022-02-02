@@ -4,6 +4,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 Kvitko_Taras_dz_6/nginx_logs.txt
+Kvitko_Taras_dz_6/*.csv
+Kvitko_Taras_dz_6/*.txt
+Kvitko_Taras_dz_6/*.json
 
 # C extensions
 *.so
