@@ -1,3 +1,4 @@
+import os
 import sys
 
 STRING_LENGTH = 7  # придется захардкодить длину строки, чтобы точно найти позицию
@@ -6,7 +7,7 @@ if len(sys.argv) < 3:
     print('Введите значение и номер строки')
     sys.exit(1)
 else:
-    with open('bakery.csv', 'r+', encoding='utf-8') as f:
+    with open(os.path.join('data', 'bakery.csv'), 'r+', encoding='utf-8') as f:
         script, amount, position = sys.argv
         position = int(position)
         lines_count = sum(1 for line in f)  # считаем количество строк в файле
