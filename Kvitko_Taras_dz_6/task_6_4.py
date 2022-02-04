@@ -11,15 +11,16 @@ def parse_files(users_file: str, hobbies_file: str, users_hobbies_file: str) -> 
         with open(hobbies_file, encoding='utf-8') as hobbies_f:
             with open(users_hobbies_file, 'w', encoding='utf-8') as users_hobbies_f:
 
-                user = True  # загушка для старта while
-                while user:
+                while True:
                     user = users_f.readline()
                     hobby = hobbies_f.readline()
-
                     if not hobby:
                         hobby = None
-                    if not user:
-                        sys.exit(1)
+                        if not user:
+                            break
+                    else:
+                        if not user:
+                            sys.exit(1)
                     users_hobbies_f.write(f'{user.strip()}: {hobby}')
 
 
