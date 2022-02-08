@@ -7,6 +7,7 @@ Kvitko_Taras_dz_6/nginx_logs.txt
 Kvitko_Taras_dz_6/*.csv
 Kvitko_Taras_dz_6/*.txt
 Kvitko_Taras_dz_6/*.json
+Kvitko_Taras_dz_7/some_data/*
 
 # C extensions
 *.so
