@@ -11,12 +11,10 @@ def show_stats(base_dir: str):
     thresholds = {10 ** x: [0, set()] for x in range(1, 6)}
     thresholds[0] = [0, set()]
 
-    for item in os.walk(top=base_dir):
-        files = item[2]
+    for root, folders, files in os.walk(top=base_dir):
         if files:
-            folder = item[0]
             for file in files:
-                size = os.stat(os.path.join(folder, file)).st_size
+                size = os.stat(os.path.join(root, file)).st_size
                 extension = file.split('.')[-1]
 
                 for key in sorted(thresholds.keys()):
@@ -38,5 +36,5 @@ def show_stats(base_dir: str):
 
 
 if __name__ == '__main__':
-    base_dir = 'my'
+    base_dir = 'my_project'
     show_stats(base_dir=base_dir)

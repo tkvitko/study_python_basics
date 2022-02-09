@@ -19,7 +19,7 @@ def merge_folders(base_dir_name: str, merging_dir_name: str):
                 shutil.copytree(src=src,
                                 dst=dst)
             except FileExistsError as e:
-                print(f'{e.filename} already exists, spipping...')
+                print(f'{e.filename} already exists, skipping...')
             except Exception as e:
                 print(f'{e.__class__.__name__} - {e} FATALITY')
 
