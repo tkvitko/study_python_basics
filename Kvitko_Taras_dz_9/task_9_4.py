@@ -59,7 +59,7 @@ class Car:
 
 class TownCar(Car):
 
-    def show_speed(self):
+    def show_speed(self) -> None:
         speed_limit = 60
         if self.speed > speed_limit:
             print(f'Alarm!!! Speed!!!')
@@ -73,7 +73,10 @@ class SportCar(Car):
 
 class WorkCar(Car):
 
-    def show_speed(self):
+    def show_speed(self) -> None:
+        # Правильно ли будет в таком случае (очень похожие функции в разных классах)
+        # вынести функцию вне классов и просто вызывать ее здесь с параметром speed_limit?
+        # Или создать промежуточный класс с этой функцией, унаследованный от Car, и от него наследовать новые?
         speed_limit = 40
         if self.speed > speed_limit:
             print(f'Alarm!!! Speed!!!')
