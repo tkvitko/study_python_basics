@@ -54,6 +54,14 @@ class Place:
             list_.append(unit.__dict__)
         return list_
 
+    def search_unit(self, type: str, property_: tuple):
+        for unit in self.units:
+            if unit.__class__.__name__ == type and property_[0] in unit.__dict__:
+                if unit.__dict__[property_[0]] == property_[1]:
+                    return unit
+        else:
+            raise NotEnoughEquipment('No such equipment')
+
 
 class Storage(Place):
     pass
@@ -68,7 +76,7 @@ class Equipment(ABC):
         self.model: str = model
 
     def __str__(self):
-        return self.model
+        return f'{self.__class__.__name__} {self.model}'
 
 
 class Printer(Equipment):

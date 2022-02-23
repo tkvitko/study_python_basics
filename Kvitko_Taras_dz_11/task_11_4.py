@@ -2,7 +2,6 @@ from equipment import Storage, Office
 from equipment import Printer, Scanner, Copier
 from equipment import NotEnoughEquipment
 
-
 if __name__ == '__main__':
     office = Office('Офис 1')
     office_2 = Office('Офис 2')
@@ -18,11 +17,13 @@ if __name__ == '__main__':
     storage.add(printer_2)
     storage.add(printer_3)
     storage.add(scanner)
-    print(storage)
-    print(storage.units_list)
-    print(office)
-    print(office_2)
+    print(f'Кратко о складе: {storage}')
+    print(f'Список оборудования на складе: {storage.units_list}')
+    print(f'Кратко об офисе: {office}')
+    print(f'Кратко об офисе: {office_2}')
+    print(f"Результат поиска: {storage.search_unit('Scanner', ('resolution', (1280, 720)))}")
 
+    print('4 попытки перемещений')
     try:
         storage.transit(office, printer_1)
     except NotEnoughEquipment as e:
@@ -40,7 +41,8 @@ if __name__ == '__main__':
     except NotEnoughEquipment as e:
         print(f'Перемещение невозможно: {e}')
 
-    print(storage)
-    print(office)
-    print(office_2)
+    print(f'Кратко о складе: {storage}')
+    print(f'Кратко об офисе: {office}')
+    print(f'Кратко об офисе: {office_2}')
+    print('Попытка добавить на склад не оборудование:')
     storage.add(1)
