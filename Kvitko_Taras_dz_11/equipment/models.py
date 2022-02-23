@@ -26,22 +26,33 @@ class Place:
 
     def __init__(self, name):
         self.name: str = name
-        self.units: defaultdict = defaultdict(int)
+        self.summary: defaultdict = defaultdict(int)
+        self.units: set = set()
 
     def __str__(self):
-        return f'{self.name}: {[(str(item[0]), item[1]) for item in self.units.items()]}'
+        return f'{self.name}: {self.summary.items()}'
 
     @check_objects(from_arg_number=1)
     def add(self, object_):
-        self.units[object_] += 1
+        self.summary[object_.__class__.__name__] += 1
+        self.units.add(object_)
 
     @check_objects(from_arg_number=2)
     def transit(self, other, object_):
-        if self.units[object_]:
-            self.units[object_] -= 1
-            other.units[object_] += 1
+        if object_ in self.units:
+            self.summary[object_.__class__.__name__] -= 1
+            self.units.remove(object_)
+            other.summary[object_.__class__.__name__] += 1
+            other.units.add(object_)
         else:
             raise NotEnoughEquipment('No such equipment')
+
+    @property
+    def units_list(self):
+        list_ = list()
+        for unit in self.units:
+            list_.append(unit.__dict__)
+        return list_
 
 
 class Storage(Place):

@@ -19,6 +19,7 @@ if __name__ == '__main__':
     storage.add(printer_3)
     storage.add(scanner)
     print(storage)
+    print(storage.units_list)
     print(office)
     print(office_2)
 
