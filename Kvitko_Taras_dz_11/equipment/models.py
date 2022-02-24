@@ -32,13 +32,9 @@ class Place:
     def __str__(self):
         return f'{self.name}: {self.summary.items()}'
 
-    @check_objects(from_arg_number=1)
-    def add(self, object_):
-        self.summary[object_.__class__.__name__] += 1
-        self.units.add(object_)
-
     @check_objects(from_arg_number=2)
     def transit(self, other, object_):
+        """Метод перемещения оборудования из одного места в другое"""
         if object_ in self.units:
             self.summary[object_.__class__.__name__] -= 1
             self.units.remove(object_)
@@ -49,22 +45,34 @@ class Place:
 
     @property
     def units_list(self):
+        """Свойство, содержащий полные список имеющегося оборудования"""
         list_ = list()
         for unit in self.units:
             list_.append(unit.__dict__)
         return list_
 
-    def search_unit(self, type: str, property_: tuple):
+    def search_unit(self, type_: str, property_: tuple):
+        """Метод поиска оборудования по конкретным характеристикам"""
         for unit in self.units:
-            if unit.__class__.__name__ == type and property_[0] in unit.__dict__:
+            if unit.__class__.__name__ == type_ and property_[0] in unit.__dict__:
                 if unit.__dict__[property_[0]] == property_[1]:
                     return unit
         else:
             raise NotEnoughEquipment('No such equipment')
 
+    def iter_units(self):
+        """Метод, возвращающий генератор для итерирования по имеющемуся оборудованию"""
+        for unit in self.units:
+            yield unit
+
 
 class Storage(Place):
-    pass
+
+    @check_objects(from_arg_number=1)
+    def add(self, object_):
+        """Метод для приемки оборудования на склад"""
+        self.summary[object_.__class__.__name__] += 1
+        self.units.add(object_)
 
 
 class Office(Place):

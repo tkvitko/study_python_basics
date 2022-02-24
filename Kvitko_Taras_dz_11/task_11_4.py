@@ -23,6 +23,10 @@ if __name__ == '__main__':
     print(f'Кратко об офисе: {office_2}')
     print(f"Результат поиска: {storage.search_unit('Scanner', ('resolution', (1280, 720)))}")
 
+    print('Результат итерирования по оборудованию склада')
+    for unit in storage.iter_units():
+        print(unit)
+
     print('4 попытки перемещений')
     try:
         storage.transit(office, printer_1)
