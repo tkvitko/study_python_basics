@@ -1,0 +1,37 @@
+1. Проверить, установлен ли пакет pillow в глобальном окружении. Если да — зафиксировать версию.
+
+(base) tkvitko@Tarass-MacBook-Pro ~ % pip show Pillow
+Name: Pillow
+Version: 9.0.0
+Summary: Python Imaging Library (Fork)
+Home-page: https://python-pillow.org
+Author: Alex Clark (PIL Fork Author)
+Author-email: aclark@python-pillow.org
+License: HPND
+Location: /Users/tkvitko/opt/anaconda3/lib/python3.8/site-packages
+Requires:
+Required-by: torchvision, scikit-image, matplotlib, imageio, bokeh
+
+2. Установить самую свежую версию pillow, если ранее она не была установлена.
+
+3. Создать и активировать виртуальное окружение. Убедиться, что в нем нет пакета pillow.
+
+(base) tkvitko@Tarass-MacBook-Pro test % python -m venv virt
+(base) tkvitko@Tarass-MacBook-Pro test % source virt/bin/activate
+(virt) (base) tkvitko@Tarass-MacBook-Pro test %
+(virt) (base) tkvitko@Tarass-MacBook-Pro test %
+(virt) (base) tkvitko@Tarass-MacBook-Pro test % pip show Pillow
+WARNING: Package(s) not found: Pillow
+
+4. Установить в виртуальное окружение pillow версии 7.1.1 (или другой, отличной от самой свежей).
+
+(virt) (base) tkvitko@Tarass-MacBook-Pro test % pip install Pillow==7.1.1
+Collecting Pillow==7.1.1
+  Using cached Pillow-7.1.1-cp38-cp38-macosx_10_10_x86_64.whl (2.2 MB)
+Installing collected packages: Pillow
+Successfully installed Pillow-7.1.1
+
+5. Деактивировать виртуальное окружение.
+
+(virt) (base) tkvitko@Tarass-MacBook-Pro test % deactivate
+(base) tkvitko@Tarass-MacBook-Pro test %
