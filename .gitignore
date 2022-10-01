@@ -10,6 +10,7 @@ Kvitko_Taras_dz_6/*.json
 
 # C extensions
 *.so
+.idea/
 
 # Distribution / packaging
 .Python
