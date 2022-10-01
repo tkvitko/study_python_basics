@@ -6,7 +6,7 @@ from .exceptions import NotEnoughEquipment, NotEquipment
 
 def check_objects(from_arg_number):
     """
-    Функция проверки, что агрументы, начиная с аргумента под номером from_arg_number, являются оборудованием
+    Функция проверки, что аргументы, начиная с аргумента под номером from_arg_number, являются оборудованием
     """
 
     def check_objects_(method):
